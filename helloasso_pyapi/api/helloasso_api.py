@@ -1,10 +1,16 @@
 from datetime import timedelta
 # from humanfriendly import format_timespan
 from helloasso_api import ApiV5Client, HaApiV5
-from helloasso_pyapi.api.api_secrets import clientId, clientSecret, access_token, refresh_token, organizationSlug
-# from api.api_secrets import clientId, clientSecret, access_token, refresh_token, organizationSlug
 from requests import get, post
 from os import system
+import json
+
+with open("api_secrets.py", 'r') as f: api_secrets = json.load(f)
+clientId = api_secrets["clientId"]
+clientSecret = api_secrets["clientSecret"]
+access_token = api_secrets["access_token"]
+refresh_token = api_secrets["refresh_token"]
+organizationSlug = api_secrets["organizationSlug"]
 
 api = HaApiV5(
         api_base='api.helloasso.com',

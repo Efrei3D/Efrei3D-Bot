@@ -1,5 +1,5 @@
 # Project files
-hellasso_pyapi/api/api_secrets.py
+helloasso_pyapi/api/api_secrets.py
 *.txt
 *.json
 
