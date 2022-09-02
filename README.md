@@ -18,9 +18,9 @@ This program is registered under the following <a href="https://github.com/Efrei
 <h2 align="left"> Sources used</h2>
 <p align="left">
 The following websites were used as documentation to build the bot:
-  • <a href="https://discordpy.readthedocs.io/en/stable/index.html#getting-started" target="_blank">discord.py</a> documentation
-  • <a href="https://discord.com/developers/docs/intro" target="_blank">Discord API</a> documentation
-  • <a href="https://api.helloasso.com/v5/swagger/ui/index" tagert="_blank">HellAsso API</a> documentation
+  • <a href="https://discordpy.readthedocs.io/en/stable/index.html#getting-started" target="_blank">discord.py</a> documentation;<br>
+  • <a href="https://discord.com/developers/docs/intro" target="_blank">Discord API</a> documentation;<br>
+  • <a href="https://api.helloasso.com/v5/swagger/ui/index" tagert="_blank">HellAsso API</a> documentation.<br>
 
 <br>
 <h2 align="left">Credits</h2>
