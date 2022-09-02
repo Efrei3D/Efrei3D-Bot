@@ -12,7 +12,7 @@ Its first and foremost command is !give_role which gives the member role to all 
 This bot is still in development and is prone to regular change.
 <br><br>
 <h2 align="left">📜 License</h2>
-This program is registered under the following <a href="MIT License" target="https://github.com/Efrei3D/Discord-Bot/blob/main/LICENSE"><i>Insert License</i></a>.
+This program is registered under the following <a href="https://github.com/Efrei3D/Discord-Bot/blob/main/LICENSE" target="_blank"><i>MIT License</i></a>.
 
 <br>
 <h2 align="left">Credits</h2>
