@@ -5,7 +5,6 @@
 
 <p align="center"><b>A quick administration Discord Bot <br>written in Python 3.10</b></p><br>
 
-<br>
 <h2 align="left">About the bot</h2>
 <i>Efrei3D Bot</i> is a discord bot written in Python 3.0 and using discord.py 2.0.1.
 It was first created with the intention to automate some tasks on Discord, namely regarding the platforme HelloAsso.
