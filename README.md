@@ -1,7 +1,7 @@
 <!-- <h1 align="center">SOLERIUM</h1> <br> -->
 
 <!-- <a href="https://github.com/Dragan-Constantin/Projet-Transverse-L1S2" target="_blank"><p align="center"> <img alt="GitPoint" title="GameTitle" src="https://avatars.githubusercontent.com/u/102966862?v=4" width="225"></p></a> -->
-<a href="https://github.com/Efrei3D/Discord-Bot" target="_blank"><p align="center"> <img alt="MainIcon" title="MainIcon" src="https://avatars.githubusercontent.com/u/102966862?v=4" width="550"></p></a>
+<a href="https://github.com/Efrei3D/Discord-Bot" target="_blank"><p align="center"> <img alt="MainIcon" title="MainIcon" src="https://avatars.githubusercontent.com/u/102966862?v=4" width="275"></p></a>
 
 <p align="center"><b>A quick administration Discord Bot linked written in Python 3.0</b></p><br>
 
