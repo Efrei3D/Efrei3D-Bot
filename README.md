@@ -6,10 +6,13 @@
 <p align="center"><b>A quick administration Discord Bot <br>written in Python 3.10</b></p><br>
 
 <h2 align="left">About the bot</h2>
+<div style="text-align: right">
 <i>Efrei3D Bot</i> is a discord bot written in Python 3.0 and using discord.py 2.0.1.
 It was first created with the intention to automate some tasks on Discord, namely regarding the platforme HelloAsso.
 Its first and foremost command is !give_role which gives the member role to all new members on HelloAsso present on the Discord server, and renaming said members with their firstname and surname, so as not to create confusion during the events.
 This bot is still in development and is prone to regular change.
+</div>
+
 <br><br>
 <h2 align="left">📜 License</h2>
 This program is registered under the following <a href="https://github.com/Efrei3D/Discord-Bot/blob/main/LICENSE" target="_blank">MIT License</a>.
