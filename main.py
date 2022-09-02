@@ -6,7 +6,8 @@ from itertools import cycle
 from helloasso_pyapi.main_helloasso import run_api
 import asyncio
 
-token = 'MTAwOTAyODc0NTYwMjAwNzA3MA.GjB1xb.E0F9C3NRad3969BmUr8e87gjEdllVzbI72fQBA'
+with open("discord_secrets.json", 'r') as f: secrets = json.load(f)
+token = secrets["token"]
 prefix = '!'
 
 class Greetings(commands.Cog):
