@@ -14,6 +14,16 @@ It was first created with the intention to automate some tasks <br>on Discord, n
 <br><br>
 <h2 align="left">📜 License</h2>
 This program is registered under the following <a href="https://github.com/Efrei3D/Discord-Bot/blob/main/LICENSE" target="_blank">MIT License</a>.
+<br><br>
+<h2 align="left"> Sources used</h2>
+<p align="left">
+The following websites were used as documentation to build the bot:<br>
+&nbsp&nbsp&nbsp • <a href="https://discordpy.readthedocs.io/en/stable/index.html#getting-started" target="_blank">discord.py</a> documentation;
+  <br>
+&nbsp&nbsp&nbsp • <a href="https://discord.com/developers/docs/intro" target="_blank">Discord API</a> documentation;
+  <br>
+&nbsp&nbsp&nbsp • <a href="https://api.helloasso.com/v5/swagger/ui/index" tagert="_blank">HellAsso API</a> documentation.
+  <br>
 
 <br>
 <h2 align="left">Credits</h2>
@@ -22,7 +32,9 @@ This program is registered under the following <a href="https://github.com/Efrei
   <a href="https://www.linkedin.com/in/dragan-constantin" target="_blank">
     <img align="center" alt="LinkedIn Profile" width="16px" src="https://raw.githubusercontent.com/Dragan-Constantin/myicons/main/linkedin-icon.png?token=AWLZ6NKTBE2KIUVET24RFFTB2RWYS">
   </a><br>
+  <!--
   • Morel Nathan:
   <a href="https://fr.linkedin.com/in/nathan-morel-4b993b1b7" target="_blank">
     <img align="center" alt="LinkedIn Profile" width="16px" src="https://raw.githubusercontent.com/Dragan-Constantin/myicons/main/linkedin-icon.png?token=AWLZ6NKTBE2KIUVET24RFFTB2RWYS">
   </a><br>
+-->
