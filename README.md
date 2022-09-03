@@ -32,7 +32,9 @@ The following websites were used as documentation to build the bot:<br>
   <a href="https://www.linkedin.com/in/dragan-constantin" target="_blank">
     <img align="center" alt="LinkedIn Profile" width="16px" src="https://raw.githubusercontent.com/Dragan-Constantin/myicons/main/linkedin-icon.png?token=AWLZ6NKTBE2KIUVET24RFFTB2RWYS">
   </a><br>
+  <!--
   • Morel Nathan:
   <a href="https://fr.linkedin.com/in/nathan-morel-4b993b1b7" target="_blank">
     <img align="center" alt="LinkedIn Profile" width="16px" src="https://raw.githubusercontent.com/Dragan-Constantin/myicons/main/linkedin-icon.png?token=AWLZ6NKTBE2KIUVET24RFFTB2RWYS">
   </a><br>
+-->
