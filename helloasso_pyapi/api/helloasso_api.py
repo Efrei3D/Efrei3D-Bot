@@ -5,11 +5,12 @@ from requests import get, post
 from os import system
 import json
 
-with open("api_secrets.py", 'r') as f: api_secrets = json.load(f)
+with open("helloasso_pyapi/api/api_secrets.json", 'r') as f: api_secrets = json.load(f)
 clientId = api_secrets["clientId"]
 clientSecret = api_secrets["clientSecret"]
-access_token = api_secrets["access_token"]
-refresh_token = api_secrets["refresh_token"]
+# access_token = api_secrets["access_token"]
+# refresh_token = api_secrets["refresh_token"]
+access_token = api_secrets["refresh_token"]
 organizationSlug = api_secrets["organizationSlug"]
 
 api = HaApiV5(
