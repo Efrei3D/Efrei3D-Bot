@@ -1,3 +1,4 @@
+from pydoc import describe
 import discord
 from discord.ext import commands, tasks
 import os, platform, json
@@ -18,8 +19,11 @@ class Greetings(commands.Cog):
 intents = discord.Intents.all()
 intents.message_content = True
 # The bot
-bot = commands.Bot(command_prefix=prefix, owner_id = 315927396081729536, description="Hello there! I'm Efrei3D Bot.", intents = intents)
-
+bot = commands.Bot(command_prefix=prefix,
+                    owner_id = 315927396081729536,
+                    help_command=None,
+                    description="Hello there! I'm Efrei3D Bot.",
+                    intents = intents)
 
 
 # # Load Cogs
@@ -34,7 +38,7 @@ bot = commands.Bot(command_prefix=prefix, owner_id = 315927396081729536, descrip
 async def on_ready():
     print(f"{bot.user} is now running")
     print(f"Discord version: {discord.__version__}")
-    print(f"Bot version: b0.5")
+    print(f"Bot version: b0.7")
     activity_watching = discord.Activity(type=discord.ActivityType.watching, name = f"Blender Tutorials")
     # activity_watching = discord.CustomActivity(name = f"This is a custom activity 🦖", type=discord.ActivityType.custom, emoji=None)
     await bot.change_presence(status = discord.Status.online, activity = activity_watching)
@@ -52,6 +56,24 @@ async def on_message(msg):
     else: await bot.process_commands(msg)
 
 
+@bot.command(name="help",
+            usage=f'{prefix}help',
+            description='displays all commands available to you',
+            aliases=['h'])
+async def help_cmd(ctx):
+    spacing = "\t ​ ​ ​ ​ ​ ​ ​ ​\t"
+    embed=discord.Embed(title="**Tu cherches une commande ?**", description="prefix: !", color=0x7ec75b)
+    embed.set_thumbnail(url="https://cdn.helloasso.com/img/logos/efrei%203d-8fe1b94ab4c44666ac64ffc89ae19641.png")
+    
+    embed.add_field(name="socials", value='Liste l\'ensemble des endroits où tu peux nous retrouver, sur le web et sur campus', inline=False)
+    if ctx.message.author.guild_permissions.administrator == True:
+        embed.add_field(name="give_role", value="Adds this year's member role to all new members, and nicks them (<firstname><lastname>)", inline=False)
+    if ctx.message.author.id == 315927396081729536:
+        embed.add_field(name="stop", value=f'Allows user to remotely shut down the bot', inline=False)
+    embed.set_footer(text="Efrei3D: Parce que la réalité ne nous suffit pas 🦖")
+    await ctx.send(embed=embed)
+
+
 @bot.command(name = "stop",
                     usage = '',
                     description = "shutsdown the bot",
@@ -60,6 +82,22 @@ async def on_message(msg):
 async def stop_cmd(ctx):
     await ctx.send("https://tenor.com/view/star-wars-darth-vader-noo-no-gif-15893771")
     exit()
+
+
+@bot.command(name = "socials",
+            usage = '',
+            description = "gives a list of Efrei3D social networks")
+async def give_socials(ctx):
+    spacing = "\t ​ ​ ​ ​ ​ ​ ​ ​\t"
+    embed=discord.Embed(title="**Où nous retrouver ?**", color=0x7ec75b)
+    embed.set_thumbnail(url="https://cdn.helloasso.com/img/logos/efrei%203d-8fe1b94ab4c44666ac64ffc89ae19641.png")
+    embed.add_field(name="Nos locaux", value='Sur le campus République, 1er étage du bâtiment E, à côté des salles de réunion.')
+    embed.add_field(name="Nos Réseaux Sociaux", value=f'**[Instagram](https://www.instagram.com/efrei3d/){spacing}[Facebook](https://www.facebook.com/EFREI-3D-1437461196500261/)**\n', inline=False)
+    embed.add_field(name="Notre Discord", value=f'[Efrei3D](https://discord.gg/mk4bXtnVYx)', inline=False)
+    embed.add_field(name="Nos Réseaux Professionels", value=f'**[Linkedin](https://www.linkedin.com/company/efrei-3d)**\n', inline=False)
+    embed.add_field(name="Nos portfolios", value=f'**[SketchFab](https://www.sketchfab.com/efrei3d){spacing}[Github](https://www.github.com/Efrei3D)**\n', inline=False)
+    embed.set_footer(text="Efrei3D: Parce que la réalité ne nous suffit pas 🦖")
+    await ctx.send(embed=embed)
 
 
 @bot.command(name = "give_role",
@@ -72,31 +110,23 @@ async def give_role(ctx):
         print('\n')
         with open("short_memberlist.json", 'r') as f: memberlist = json.load(f)
         for element in memberlist:
+            member_role = discord.utils.get(user_dscd.guild.roles, name = "Membre 2022-2023")
             user_data, user_dscd = memberlist[element], memberlist[element]["discord"]
             converter = commands.MemberConverter()
             user_dscd = await converter.convert(ctx, user_dscd)
-            await user_dscd.add_roles(discord.utils.get(user_dscd.guild.roles, name = "Membre 2022-2023"))
-            await user_dscd.edit(nick=f'{user_data["firstname"]} {user_data["lastname"]}')
-            print(f'\"{user_dscd}\" roles and nicks were updated\n')
+            guild = bot.get_guild(ctx.guild.id)
+            if guild.get_member(user_dscd.id):
+                if member_role in user_dscd.roles:
+                    await user_dscd.add_roles(member_role)
+                if user_dscd.nick != f'{user_data["firstname"]} {user_data["lastname"]}':
+                    await user_dscd.edit(nick=f'{user_data["firstname"]} {user_data["lastname"]}')
+                print(f'\"{user_dscd}\" roles and nicks were updated\n')
+            else:
+                await ctx.send(f'\"{user_dscd}\" isn\'t on the server and couldn\'t be renamed')
+                print(f'\"{user_dscd}\" isn\'t on the server and couldn\'t be renamed')
         await ctx.send("all new users roles and nicks were updated")
         print("all new users roles and nicks were updated")
     else: await ctx.send("Disabled in this server. (sorry 🥺)")
-
-
-@bot.command(name = "socials",
-            usage = '',
-            description = "gives a list of Efrei3D social networks")
-async def give_socials(ctx):
-    spacing = "\t ​ ​ ​ ​ ​ ​ ​ ​\t"
-    embed=discord.Embed(title="**Où nous retrouver ?**", color=0x7ec75b)
-    embed.set_thumbnail(url="https://cdn.helloasso.com/img/logos/efrei%203d-8fe1b94ab4c44666ac64ffc89ae19641.png")
-    embed.add_field(name="Nos locaux", value='Sur le campus République, 1er étage du bâtiment E, à côté des salles de réunion.')
-    embed.add_field(name="Nos Réseaux Sociaux", value=f'**[Instagram](https://www.instagram.com/efrei3d/){spacing}[Facebook](https://www.facebook.com/EFREI-3D-1437461196500261/)**\n', inline=False)
-    embed.add_field(name="Notre Discord", value=f'Nouveau lien d\'invite illimité bientôt disponible\n', inline=False)
-    embed.add_field(name="Nos Réseaux Professionels", value=f'**[Linkedin](https://www.linkedin.com/company/efrei-3d)**\n', inline=False)
-    embed.add_field(name="Nos portfolios", value=f'**[SketchFab](https://www.sketchfab.com/efrei3d){spacing}[Github](https://www.github.com/Efrei3D)**\n', inline=False)
-    embed.set_footer(text="Efrei3D: Parce que la réalité ne nous suffit pas 🦖")
-    await ctx.send(embed=embed)
 
 
 # starting and running the bot
