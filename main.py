@@ -38,7 +38,7 @@ bot = commands.Bot(command_prefix=prefix,
 async def on_ready():
     print(f"{bot.user} is now running")
     print(f"Discord version: {discord.__version__}")
-    print(f"Bot version: b0.7")
+    print(f"Bot version: b0.7.1")
     activity_watching = discord.Activity(type=discord.ActivityType.watching, name = f"Blender Tutorials")
     # activity_watching = discord.CustomActivity(name = f"This is a custom activity 🦖", type=discord.ActivityType.custom, emoji=None)
     await bot.change_presence(status = discord.Status.online, activity = activity_watching)
@@ -90,11 +90,11 @@ async def stop_cmd(ctx):
             aliases = ["Efrei3D".lower()])
 async def efrei3d(ctx):
     spacing = "\t ​ ​ ​ ​ ​ ​ ​ ​\t"
-    embed=discord.Embed(title="**Qui sommes nous ?**", description="Efrei3D est une association qui tourne autour de la 3D. Qu'il s'agisse de modélisation (Blender, SolidWorks), d'impression 3D, de création de jeux vidéos (Unreal Engine) ou même de création de cours métrages, nous proposons de former et partager des connaissances autour de projets en tout genres.", color=0x7ec75b)
+    embed=discord.Embed(title="**Qui sommes nous ?**", description="Efrei3D est une association créé le 27 mars 2009 qui tourne autour de la 3D. Qu'il s'agisse de modélisation (Blender, SolidWorks), d'impression 3D, de création de jeux vidéos (Unreal Engine) ou même de création de cours métrages, nous proposons de former et partager des connaissances autour de projets en tout genres.", color=0x7ec75b)
     embed.set_thumbnail(url="https://cdn.helloasso.com/img/logos/efrei%203d-8fe1b94ab4c44666ac64ffc89ae19641.png")
     embed.add_field(name="__Nos locaux__", value='Sur le campus République, 1er étage du bâtiment E, à côté des salles de réunion.')
-    embed.add_field(name="\n__Le bureau restreint__", value=f'**Président :** Nathan Morel{spacing}**Vice-Président :** Victor Steimberg\n**Trésorier :** Constantin Dragan  **Secrétaire :** Bastien Robert\n', inline=False)
-    embed.add_field(name="__Le bureau étendu__", value=f'**Responsable Handicap :** Christian Miclea\n**Responsables Communication :**\nEyfeline Tala{spacing}Martin ...{spacing}Samuel Poinama', inline=False)
+    embed.add_field(name="\n__Le bureau restreint__", value=f'**Président :** Nathan Morel{spacing} ​ ​ **Vice-Président :** Victor Steimberg\n**Trésorier :** Constantin Dragan ​ ​ **Secrétaire :** Bastien Robert\n', inline=False)
+    embed.add_field(name="__Le bureau étendu__", value=f'**Responsable Handicap :** Christian Miclea\n**Responsables Communication :**\nEyfeline Tala{spacing}Martin Kang{spacing}Samuel Poinama', inline=False)
     embed.set_footer(text="Efrei3D: Parce que la réalité ne nous suffit pas 🦖")
     await ctx.send(embed=embed)
 
@@ -106,8 +106,8 @@ async def give_socials(ctx):
     embed=discord.Embed(title="**Où nous retrouver ?**", color=0x7ec75b)
     embed.set_thumbnail(url="https://cdn.helloasso.com/img/logos/efrei%203d-8fe1b94ab4c44666ac64ffc89ae19641.png")
     embed.add_field(name="Nos locaux", value='Sur le campus République, 1er étage du bâtiment E, à côté des salles de réunion.')
-    embed.add_field(name="Nos Réseaux Sociaux", value=f'**[Instagram](https://www.instagram.com/efrei3d/){spacing}[Facebook](https://www.facebook.com/EFREI-3D-1437461196500261/)**\n', inline=False)
-    embed.add_field(name="Notre Discord", value=f'[Efrei3D](https://discord.gg/mk4bXtnVYx)', inline=False)
+    embed.add_field(name="Nos Réseaux Sociaux", value=f'**[Instagram](https://www.instagram.com/efrei3d/){spacing}[Facebook](https://www.facebook.com/EFREI-3D-1437461196500261/){spacing}[YouTube](https://www.youtube.com/channel/UCrfy0ypHEe8B03LwIgM1WTg)**\n', inline=False)
+    embed.add_field(name="Notre Discord", value=f'**[Efrei3D](https://discord.gg/mk4bXtnVYx)**', inline=False)
     embed.add_field(name="Nos Réseaux Professionels", value=f'**[Linkedin](https://www.linkedin.com/company/efrei-3d)**\n', inline=False)
     embed.add_field(name="Nos portfolios", value=f'**[SketchFab](https://www.sketchfab.com/efrei3d){spacing}[Github](https://www.github.com/Efrei3D)**\n', inline=False)
     embed.set_footer(text="Efrei3D: Parce que la réalité ne nous suffit pas 🦖")
