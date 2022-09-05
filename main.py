@@ -42,7 +42,7 @@ async def on_ready():
     activity_watching = discord.Activity(type=discord.ActivityType.watching, name = f"Blender Tutorials")
     # activity_watching = discord.CustomActivity(name = f"This is a custom activity 🦖", type=discord.ActivityType.custom, emoji=None)
     await bot.change_presence(status = discord.Status.online, activity = activity_watching)
-    run_api()
+    # run_api()
 
 # gives answers and/or reactions to things the members say (ex: "Hello There", "Gros Cailloux", and so on)
 @bot.event
@@ -83,6 +83,20 @@ async def stop_cmd(ctx):
     await ctx.send("https://tenor.com/view/star-wars-darth-vader-noo-no-gif-15893771")
     exit()
 
+
+@bot.command(name = "Efrei 3D".lower(),
+            usage = '',
+            description = "Returns current information about the association",
+            aliases = ["Efrei3D".lower()])
+async def efrei3d(ctx):
+    spacing = "\t ​ ​ ​ ​ ​ ​ ​ ​\t"
+    embed=discord.Embed(title="**Qui sommes nous ?**", description="Efrei3D est une association qui tourne autour de la 3D. Qu'il s'agisse de modélisation (Blender, SolidWorks), d'impression 3D, de création de jeux vidéos (Unreal Engine) ou même de création de cours métrages, nous proposons de former et partager des connaissances autour de projets en tout genres.", color=0x7ec75b)
+    embed.set_thumbnail(url="https://cdn.helloasso.com/img/logos/efrei%203d-8fe1b94ab4c44666ac64ffc89ae19641.png")
+    embed.add_field(name="__Nos locaux__", value='Sur le campus République, 1er étage du bâtiment E, à côté des salles de réunion.')
+    embed.add_field(name="\n__Le bureau restreint__", value=f'**Président :** Nathan Morel{spacing}**Vice-Président :** Victor Steimberg\n**Trésorier :** Constantin Dragan  **Secrétaire :** Bastien Robert\n', inline=False)
+    embed.add_field(name="__Le bureau étendu__", value=f'**Responsable Handicap :** Christian Miclea\n**Responsables Communication :**\nEyfeline Tala{spacing}Martin ...{spacing}Samuel Poinama', inline=False)
+    embed.set_footer(text="Efrei3D: Parce que la réalité ne nous suffit pas 🦖")
+    await ctx.send(embed=embed)
 
 @bot.command(name = "socials",
             usage = '',
