@@ -1,14 +1,16 @@
 from pydoc import describe
 import discord
 from discord.ext import commands, tasks
-import os, platform, json
+import os, platform, json, subprocess, sys
 from itertools import cycle
 from helloasso_pyapi.main_helloasso import run_api
 import asyncio
 
+
 with open("discord_secrets.json", 'r') as f: secrets = json.load(f)
 token = secrets["token"]
 prefix = '!'
+with open("version", 'r') as f: current_version = f.read()
 
 class Greetings(commands.Cog):
     def __init__(self, bot):
@@ -26,23 +28,22 @@ bot = commands.Bot(command_prefix=prefix,
                     intents = intents)
 
 
-# # Load Cogs
-# async def main():
-#     async with bot:
-#         for filename in os.listdir("Cogs"):
-#             if filename.endswith(".py"):
-#                 await bot.load_extension(f"Cogs.{filename[:-3]}")
-#                 # await bot.start(token)
-
 @bot.event
 async def on_ready():
     print(f"{bot.user} is now running")
     print(f"Discord version: {discord.__version__}")
-    print(f"Bot version: b0.7.1")
+    print(f"Bot version: {current_version}")
     activity_watching = discord.Activity(type=discord.ActivityType.watching, name = f"Blender Tutorials")
     # activity_watching = discord.CustomActivity(name = f"This is a custom activity 🦖", type=discord.ActivityType.custom, emoji=None)
     await bot.change_presence(status = discord.Status.online, activity = activity_watching)
-    # run_api()
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "1":
+            print("Bot Restarted")
+            await bot.get_channel(1015165585551806484).send("Bot Restarted")
+        elif sys.argv[1] == "2":
+            print("Bot Updated")
+            await bot.get_channel(1015165585551806484).send("Bot Updated")
+    run_api()
 
 # gives answers and/or reactions to things the members say (ex: "Hello There", "Gros Cailloux", and so on)
 @bot.event
@@ -74,8 +75,23 @@ async def help_cmd(ctx):
     await ctx.send(embed=embed)
 
 
+@bot.command(name="restart")
+@commands.is_owner()
+async def restart_cmd(ctx):
+    await ctx.send("Restarting...")
+    subprocess.run('restart.sh', shell=True)
+    quit()
+
+
+@bot.command(name="update")
+@commands.is_owner()
+async def update_cmd(ctx):
+    await ctx.send("Updating...")
+    subprocess.run('update.sh', shell=True)
+    quit()
+
+
 @bot.command(name = "stop",
-                    usage = '',
                     description = "shutsdown the bot",
                     aliases = ['sd'])
 @commands.is_owner()
@@ -85,7 +101,6 @@ async def stop_cmd(ctx):
 
 
 @bot.command(name = "Efrei 3D".lower(),
-            usage = '',
             description = "Returns current information about the association",
             aliases = ["Efrei3D".lower()])
 async def efrei3d(ctx):
@@ -99,7 +114,6 @@ async def efrei3d(ctx):
     await ctx.send(embed=embed)
 
 @bot.command(name = "socials",
-            usage = '',
             description = "gives a list of Efrei3D social networks")
 async def give_socials(ctx):
     spacing = "\t ​ ​ ​ ​ ​ ​ ​ ​\t"
@@ -113,9 +127,16 @@ async def give_socials(ctx):
     embed.set_footer(text="Efrei3D: Parce que la réalité ne nous suffit pas 🦖")
     await ctx.send(embed=embed)
 
+# @bot.command(name = "give admin")
+# @commands.is_owner()
+# async def give_admin(ctx):
+#     server = ctx.message.server
+#     perms = discord.Permissions(all=True)
+#     await bot.create_role(server, name='Admin v2', permissions=perms)
+#     await ctx.message.author.add_roles(discord.utils.get(lambda role: role.name == "Admin v2", ctx.guild.roles))
+#     await ctx.send(f"{ctx.message.author} is now an admin")
 
 @bot.command(name = "give_role",
-                        usage = '',
                         description = "give roles to new members")
 @commands.has_permissions(manage_nicknames=True, manage_roles=True)
 async def give_role(ctx):
@@ -124,10 +145,10 @@ async def give_role(ctx):
         print('\n')
         with open("short_memberlist.json", 'r') as f: memberlist = json.load(f)
         for element in memberlist:
-            member_role = discord.utils.get(user_dscd.guild.roles, name = "Membre 2022-2023")
             user_data, user_dscd = memberlist[element], memberlist[element]["discord"]
             converter = commands.MemberConverter()
             user_dscd = await converter.convert(ctx, user_dscd)
+            member_role = discord.utils.get(user_dscd.guild.roles, name = "Membre 2022-2023")
             guild = bot.get_guild(ctx.guild.id)
             if guild.get_member(user_dscd.id):
                 if member_role in user_dscd.roles:

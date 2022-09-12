@@ -5,7 +5,7 @@ from requests import get, post
 from os import system
 import json
 
-with open("helloasso_pyapi/api/api_secrets.json", 'r') as f: api_secrets = json.load(f)
+with open("api_secrets.json", 'r') as f: api_secrets = json.load(f)
 clientId = api_secrets["clientId"]
 clientSecret = api_secrets["clientSecret"]
 # access_token = api_secrets["access_token"]

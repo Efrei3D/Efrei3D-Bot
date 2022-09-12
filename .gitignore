@@ -2,7 +2,7 @@
 helloasso_pyapi/api/api_secrets.py
 *.txt
 *.json
-
+Cogs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
