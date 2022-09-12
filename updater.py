@@ -47,6 +47,7 @@ def wipe():
     active_listdir.remove("TEMP")
     active_listdir.remove("version")
     active_listdir.remove("api_secrets.json")
+    active_listdir.remove("discord_secrets.json")
     for element in active_listdir:
         target = os.path.join(directory, element)
         try:
