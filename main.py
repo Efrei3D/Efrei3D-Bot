@@ -149,10 +149,11 @@ async def give_role(ctx):
             converter = commands.MemberConverter()
             user_dscd = await converter.convert(ctx, user_dscd)
             member_role = discord.utils.get(user_dscd.guild.roles, name = "Membre 2022-2023")
+            # member_role = user_dscd.guild.get_role(1015165051331674203)
             guild = bot.get_guild(ctx.guild.id)
             if guild.get_member(user_dscd.id):
-                if member_role in user_dscd.roles:
-                    await user_dscd.add_roles(member_role)
+                # if member_role in user_dscd.roles: await user_dscd.add_roles(member_role)
+                await user_dscd.add_roles(member_role)
                 if user_dscd.nick != f'{user_data["firstname"]} {user_data["lastname"]}':
                     await user_dscd.edit(nick=f'{user_data["firstname"]} {user_data["lastname"]}')
                 print(f'\"{user_dscd}\" roles and nicks were updated\n')
