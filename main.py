@@ -67,10 +67,14 @@ async def help_cmd(ctx):
     embed.set_thumbnail(url="https://cdn.helloasso.com/img/logos/efrei%203d-8fe1b94ab4c44666ac64ffc89ae19641.png")
     
     embed.add_field(name="socials", value='Liste l\'ensemble des endroits où tu peux nous retrouver, sur le web et sur campus', inline=False)
+    embed.add_field(name="efrei3d", value='Liste l\'ensemble du staff d\'Efrei3D', inline=False)
+    embed.add_field(name="socials", value='Liste l\'ensemble des endroits où tu peux nous retrouver, sur le web et sur campus', inline=False)
     if ctx.message.author.guild_permissions.administrator == True:
         embed.add_field(name="give_role", value="Adds this year's member role to all new members, and nicks them (<firstname><lastname>)", inline=False)
     if ctx.message.author.id == 315927396081729536:
         embed.add_field(name="stop", value=f'Allows user to remotely shut down the bot', inline=False)
+        embed.add_field(name="update", value=f'Allows user to remotely update the bot', inline=False)
+        embed.add_field(name="restart", value=f'Allows user to remotely restart the bot', inline=False)
     embed.set_footer(text="Efrei3D: Parce que la réalité ne nous suffit pas 🦖")
     await ctx.send(embed=embed)
 
